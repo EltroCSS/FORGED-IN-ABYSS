@@ -27,7 +27,7 @@ public class ForgedInAbyss {
             {220, 190, 200},
             {150, 130, 100},
             {50, 90, 80},
-            {120, 170, 150} 
+            {120, 170, 150}
         };
 
         //Eleccion de monstruo
@@ -57,7 +57,7 @@ public class ForgedInAbyss {
                 if (atacante == eleccion) {
                     int opcion;
                     while (true) {
-                        System.out.println("\nEs tu turno, atacar[1] o curarte [2]");
+                        System.out.println("\nEs tu turno, atacar ⸸️[1] o curarte (h) [2]");
                         opcion = sc.nextInt();
 
                         if (opcion == 1) {
@@ -110,12 +110,6 @@ public class ForgedInAbyss {
                         System.out.println(monstruos[objetivo] + " ha sido derrotado!");
                     }
 
-                    //estado de ronda
-                    for (int i = 0; i < monstruos.length; i++) {
-                        System.out.println(monstruos[i] + ": " + vida[i] + " puntos de vida");
-                    }
-                    System.out.println("\n");//espaciado 
-
                     //verificar condiciones de victoria o derrota
                     if (vida[eleccion] <= 0) {
                         System.out.println("Tu monstruo ha sido derrotado! Perdiste todo tu dinero!");
@@ -140,6 +134,11 @@ public class ForgedInAbyss {
                 }
 
             }
+            //estado de ronda
+            for (int i = 0; i < monstruos.length; i++) {
+                System.out.println(monstruos[i] + ": " + vida[i] + " puntos de vida");
+            }
+            System.out.println("\n");//espaciado 
             //final de ronda, aumenta el contador
             ronda++;
 
@@ -152,7 +151,7 @@ public class ForgedInAbyss {
             int idx = sc.nextInt() - 1;
             if (idx == atacante) {
                 System.out.println("Tienes tendencias suicidas? no te ataques a ti mismo!");
-            } else if (idx <= 0 || idx >= total) {
+            } else if (idx <= -1 || idx >= total) {
                 System.out.println("Elige uno de los monstruos que si estan en el ring!, intenta de nuevo: ");
             } else if (vida[idx] <= 0) {
                 System.out.println("Ya deja ese cuerpo! Elige un monstruo vivo!: ");
