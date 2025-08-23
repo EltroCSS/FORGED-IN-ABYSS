@@ -6,7 +6,7 @@ package forgedinabyss;
 
 import java.util.Scanner;
 import java.util.Random;
-
+//KAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 public class ForgedInAbyss {
 
     /**
