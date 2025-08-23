@@ -16,14 +16,19 @@ public class ForgedInAbyss {
         Scanner sc = new Scanner(System.in);
         Random random = new Random();
 
-        String[] monstruos = {"Vhacan", "Eryndor", "Relict", "Okrun"};
-        int[] vida = {500, 700, 900, 550};
+        String[] monstruos = {
+            MORADO + "Vhacan" + RESET,
+            ROJO + "Eryndor" + RESET,
+            AZUL + "Relict" + RESET,
+            VERDE + "Okrun" + RESET
+        };
+        int[] vida = {500, 700, 900, 600};
         int[][] ataques = {
-                    {700, 700, 700},   // Vhacan
-                    {55, 55, 55},   // Eryndor
-                    {45, 45, 45},   // Relict
-                    {65, 65, 65}    // Okrun
-                };
+            {220, 190, 200},
+            {150, 130, 100},
+            {50, 90, 80},
+            {120, 170, 150} 
+        };
 
         //Eleccion de monstruo
         System.out.println("Bienvenido a Forged in Abyss, elige a tu monstruo ganador");
@@ -37,7 +42,7 @@ public class ForgedInAbyss {
 
         int ronda = 1;
         int maxVida = vida[eleccion];
-        int curar = 25;
+        int curar = 150;
 
         while (true) {
             System.out.println("*---------------ronda " + ronda + "------------------*");
@@ -92,7 +97,7 @@ public class ForgedInAbyss {
 
                 //asignar el ataque y restar vida
                 if (objetivo != -1) {
-                    int poder = ataques[atacante][0]; // usamos siempre la columna 0
+                    int poder = ataques[atacante][random.nextInt(ataques[atacante].length)]; //tomara un poder aleatorio dentro de la matriz de ataque
                     vida[objetivo] -= poder;
                     if (vida[objetivo] < 0) {
                         vida[objetivo] = 0;
@@ -157,4 +162,11 @@ public class ForgedInAbyss {
         }
     }
 
-}//
+    // Colores de texto ANSI
+    public static final String RESET = "\u001B[0m"; //resetear color
+    public static final String ROJO = "\u001B[31m"; //Eryndor
+    public static final String VERDE = "\u001B[32m"; //Okrun
+    public static final String AZUL = "\u001B[34m"; //Relict
+    public static final String MORADO = "\u001B[35m"; //Vhacan 
+
+}
