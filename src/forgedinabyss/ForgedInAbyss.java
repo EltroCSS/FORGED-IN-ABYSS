@@ -57,7 +57,7 @@ public class ForgedInAbyss {
                 if (atacante == eleccion) {
                     int opcion;
                     while (true) {
-                        System.out.println("\nEs tu turno, atacar ⸸️[1] o curarte (h) [2]");
+                        System.out.println("\nEs tu turno, para atacar ingresa ️[1] o curarte [2]");
                         opcion = sc.nextInt();
 
                         if (opcion == 1) {
@@ -103,16 +103,17 @@ public class ForgedInAbyss {
                         vida[objetivo] = 0;
                     }
 
-                    System.out.println(monstruos[atacante] + " ataca a: " + monstruos[objetivo] + " y le quita: " + poder + " puntos de vida. Vida restante de "
+                    imprimirLento(monstruos[atacante] + " ataca a: " + monstruos[objetivo] + " y le quita: " + poder + " puntos de vida. Vida restante de "
                             + monstruos[objetivo] + ": " + vida[objetivo] + "\n");
 
                     if (vida[objetivo] == 0) {
-                        System.out.println(monstruos[objetivo] + " ha sido derrotado!");
+                        imprimirLento(monstruos[objetivo] + " ha sido derrotado!");
+                        System.out.println("\n");
                     }
 
                     //verificar condiciones de victoria o derrota
                     if (vida[eleccion] <= 0) {
-                        System.out.println("Tu monstruo ha sido derrotado! Perdiste todo tu dinero!");
+                        imprimirLento("Tu monstruo ha sido derrotado! Perdiste todo tu dinero!");
                         sc.close();
                         return;
                     }
@@ -127,7 +128,7 @@ public class ForgedInAbyss {
                     }
 
                     if (!npcsVivos) {
-                        System.out.println("Felicitaciones! *" + monstruos[eleccion] + "* ha derrotado a todos y te volviste mega-millonario! Conseguiste la victoria!");
+                        imprimirLento("Felicitaciones! *" + monstruos[eleccion] + "* ha derrotado a todos y te volviste mega-millonario! Conseguiste la victoria!");
                         sc.close();
                         return;
                     }
@@ -136,7 +137,7 @@ public class ForgedInAbyss {
             }
             //estado de ronda
             for (int i = 0; i < monstruos.length; i++) {
-                System.out.println(monstruos[i] + ": " + vida[i] + " puntos de vida");
+                imprimirLento(monstruos[i] + ": " + vida[i] + " puntos de vida");
             }
             System.out.println("\n");//espaciado 
             //final de ronda, aumenta el contador
@@ -167,5 +168,19 @@ public class ForgedInAbyss {
     public static final String VERDE = "\u001B[32m"; //Okrun
     public static final String AZUL = "\u001B[34m"; //Relict
     public static final String MORADO = "\u001B[35m"; //Vhacan 
+    
+    //Esta función es solo para que se muestre lento los resutados
+    public static void imprimirLento(String texto) {
+        for (char c : texto.toCharArray()) {
+            System.out.print(c);
+            try {
+                // Pausa de 15 miscroseguundos entre caracteres
+                Thread.sleep(15); 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(); 
+    }
 
 }
