@@ -6,7 +6,7 @@ package forgedinabyss;
 
 import java.util.Scanner;
 import java.util.Random;
-//KAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
 public class ForgedInAbyss {
 
     /**
@@ -18,12 +18,17 @@ public class ForgedInAbyss {
 
         String[] monstruos = {"Vhacan", "Eryndor", "Relict", "Okrun"};
         int[] vida = {500, 700, 900, 550};
-        int[] ataque = {60, 55, 45, 65};
+        int[][] ataques = {
+                    {700, 700, 700},   // Vhacan
+                    {55, 55, 55},   // Eryndor
+                    {45, 45, 45},   // Relict
+                    {65, 65, 65}    // Okrun
+                };
 
         //Eleccion de monstruo
         System.out.println("Bienvenido a Forged in Abyss, elige a tu monstruo ganador");
         for (int i = 0; i < monstruos.length; i++) {
-            System.out.println((i + 1) + ". " + monstruos[i] + " - vida: " + vida[i] + " - ataque: " + ataque[i]);
+            System.out.println((i + 1) + ". " + monstruos[i] + " - vida: " + vida[i] + " - ataque: " + ataques[i][0]);
         }
         System.out.println("\nMonstruo: ");
         int eleccion = sc.nextInt() - 1;
@@ -87,12 +92,13 @@ public class ForgedInAbyss {
 
                 //asignar el ataque y restar vida
                 if (objetivo != -1) {
-                    vida[objetivo] -= ataque[atacante];
+                    int poder = ataques[atacante][0]; // usamos siempre la columna 0
+                    vida[objetivo] -= poder;
                     if (vida[objetivo] < 0) {
                         vida[objetivo] = 0;
                     }
 
-                    System.out.println(monstruos[atacante] + " ataca a: " + monstruos[objetivo] + " y le quita: " + ataque[atacante] + " puntos de vida. Vida restante de "
+                    System.out.println(monstruos[atacante] + " ataca a: " + monstruos[objetivo] + " y le quita: " + poder + " puntos de vida. Vida restante de "
                             + monstruos[objetivo] + ": " + vida[objetivo] + "\n");
 
                     if (vida[objetivo] == 0) {
@@ -122,7 +128,7 @@ public class ForgedInAbyss {
                     }
 
                     if (!npcsVivos) {
-                        System.out.println("Felicitaciones! " + monstruos[eleccion] + "ha derrotado a todos y te volviste mega-millonario! Conseguiste la victoria!");
+                        System.out.println("Felicitaciones! *" + monstruos[eleccion] + "* ha derrotado a todos y te volviste mega-millonario! Conseguiste la victoria!");
                         sc.close();
                         return;
                     }
@@ -139,10 +145,10 @@ public class ForgedInAbyss {
         while (true) {
             System.out.println("Objetivo(numero): ");
             int idx = sc.nextInt() - 1;
-            if (idx <= 0 || idx >= total) {
-                System.out.println("Elige uno de los monstruos que si estan en el ring!, intenta de nuevo: ");
-            } else if (idx == atacante) {
+            if (idx == atacante) {
                 System.out.println("Tienes tendencias suicidas? no te ataques a ti mismo!");
+            } else if (idx <= 0 || idx >= total) {
+                System.out.println("Elige uno de los monstruos que si estan en el ring!, intenta de nuevo: ");
             } else if (vida[idx] <= 0) {
                 System.out.println("Ya deja ese cuerpo! Elige un monstruo vivo!: ");
             } else {
@@ -151,4 +157,4 @@ public class ForgedInAbyss {
         }
     }
 
-}
+}//
