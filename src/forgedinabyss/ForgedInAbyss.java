@@ -1,6 +1,6 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package forgedinabyss;
 
@@ -35,7 +35,6 @@ public class ForgedInAbyss {
         int curar = 25;
 
         while (true) {
-            limpiarPantalla();
             System.out.println("*---------------ronda " + ronda + "------------------*");
 
             //comprobar turno de monstruo vivo
@@ -94,7 +93,7 @@ public class ForgedInAbyss {
                     }
 
                     System.out.println(monstruos[atacante] + " ataca a: " + monstruos[objetivo] + " y le quita: " + ataque[atacante] + " puntos de vida. Vida restante de "
-                            + monstruos[objetivo] + ":" + vida[objetivo] + "\n");
+                            + monstruos[objetivo] + ": " + vida[objetivo] + "\n");
 
                     if (vida[objetivo] == 0) {
                         System.out.println(monstruos[objetivo] + " ha sido derrotado!");
@@ -102,8 +101,9 @@ public class ForgedInAbyss {
 
                     //estado de ronda
                     for (int i = 0; i < monstruos.length; i++) {
-                        System.out.println(monstruos[i] + ": " + vida[i] + "puntos de vida");
+                        System.out.println(monstruos[i] + ": " + vida[i] + " puntos de vida");
                     }
+                    System.out.println("\n");//espaciado 
 
                     //verificar condiciones de victoria o derrota
                     if (vida[eleccion] <= 0) {
@@ -128,9 +128,9 @@ public class ForgedInAbyss {
                     }
                 }
 
-                //final de ronda, aumenta el contador
-                ronda++;
             }
+            //final de ronda, aumenta el contador
+            ronda++;
 
         }
     }
@@ -149,11 +149,6 @@ public class ForgedInAbyss {
                 return idx;
             }
         }
-    }
-
-    static void limpiarPantalla() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
     }
 
 }
