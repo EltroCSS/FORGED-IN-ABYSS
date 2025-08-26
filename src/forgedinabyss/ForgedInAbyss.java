@@ -1,7 +1,3 @@
-/*
-* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-* Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package forgedinabyss;
 
 import java.util.Scanner;
@@ -25,7 +21,7 @@ public class ForgedInAbyss {
         int[] vida = {500, 700, 900, 600};
         int[][] ataques = {
             {220, 190, 200},
-            {150, 130, 100},
+            {150, 130, 10022},
             {50, 90, 80},
             {120, 170, 150}
         };
@@ -57,7 +53,7 @@ public class ForgedInAbyss {
                 if (atacante == eleccion) {
                     int opcion;
                     while (true) {
-                        System.out.println("\nEs tu turno, para atacar ingresa ️[1] o curarte [2]");
+                        System.out.println("\nEs tu turno, para atacar ingresa [1] o curarte [2]");
                         opcion = sc.nextInt();
 
                         if (opcion == 1) {
@@ -72,14 +68,14 @@ public class ForgedInAbyss {
 
                         } else if (opcion == 2) {
                             if (vida[atacante] >= maxVida) {
-                                System.out.println("ya tienes tu vida al maximo, solo te queda atacar!");
+                                System.out.println("Ya tienes tu vida al maximo, solo te queda atacar!");
                             } else {
                                 vida[atacante] += curar;
                                 if (vida[atacante] > maxVida) {
                                     vida[atacante] = maxVida; //evitar que se cure de mas
                                 }
-                                System.out.println(monstruos[atacante] + "se ha curado +" + curar
-                                        + " puntos. Vida actual: " + vida[atacante]);
+                                System.out.println("\n" +  monstruos[atacante] + " se ha curado +" + curar
+                                        + " puntos. Vida actual: " + vida[atacante] + "\n");
                                 objetivo = -1; //si se cura, no puede atacar
                                 break;
                             }
